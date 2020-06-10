@@ -20,7 +20,7 @@ jobs:
         run: mvn -B clean package -DskipTests
       - name: docker build
         run: |
-          docker build -f Dockerfile -t adamcao/springgitcicd:1.0
+          docker build . -t adamcao/springgitcicd:1.0
       - name: docker login
         run: |
           docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
