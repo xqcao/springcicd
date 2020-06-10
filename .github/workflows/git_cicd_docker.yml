@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    name: Test - Units & Integrations
+    name: Test - jar build, docker image build and push
     runs-on: ubuntu-18.04
 
     steps:
@@ -20,10 +20,10 @@ jobs:
         run: mvn -B clean package -DskipTests
       - name: docker build
         run: |
-          docker build . -t adamcao/springgitcicd:1.0
+          docker build . -t adamcao/springgitcicd:2.0
       - name: docker login
         run: |
           docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
       - name: docker push
         run: |
-          docker push adamcao/springgitcicd:1.0
+          docker push adamcao/springgitcicd:2.0
